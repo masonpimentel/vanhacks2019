@@ -7,11 +7,11 @@ import OutputComponent from './outputComponent';
 class App extends Component {
 
 state = {
-  truthTable: []
+  matrix: []
 }
 
-  handleTruthToggle = (newTruthTable) => {
-    this.setState({newTruthTable})
+  handleTruthToggle = (newMatrix) => {
+    this.setState({newMatrix})
   }
 
   render() {
@@ -25,7 +25,7 @@ state = {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <TableComponent handleTruthToggle={this.handleTruthToggle}/>
-        <OutputComponent truthTable={this.truthTable}/>
+        <OutputComponent matrix={this.matrix}/>
       </div>
     );
   }

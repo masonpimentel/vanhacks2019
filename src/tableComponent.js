@@ -9,7 +9,7 @@ class TableComponent extends Component {
       }
 
       render() {
-        const truthTable = this.props.truthTable;
+        const matrix = this.props.matrix;
         return (
         <div className="TableComponent">
             <div className="TC-header">

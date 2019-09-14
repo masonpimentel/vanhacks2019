@@ -3,7 +3,7 @@ import './outputComponent.css';
 
 class OutputComponent extends Component {
     render() {
-        const truthTable = this.props.truthTable;
+        const matrix = this.props.matrix;
         // TODO: Call match function with truthTable
         return (
         <div className="OutputComponent">
