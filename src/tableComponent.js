@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import './tableComponent.css';
 class TableComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-      }
     
-      handleChange() {
+      handleChange = () => {
           // TODO figure out arguments (single value or entire table?)
           console.log("handleChange()");
           this.props.handleTruthToggle();

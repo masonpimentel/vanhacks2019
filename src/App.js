@@ -5,13 +5,12 @@ import TableComponent from './tableComponent';
 import OutputComponent from './outputComponent';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.handleTruthToggle = this.handleTruthToggle.bind(this);
-    this.state = {truthTable: []};
-  }
 
-  handleTruthToggle(newTruthTable) {
+state = {
+  truthTable: []
+}
+
+  handleTruthToggle = (newTruthTable) => {
     this.setState({newTruthTable})
   }
 
