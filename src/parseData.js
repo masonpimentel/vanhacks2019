@@ -1,16 +1,20 @@
 import data from './data.json'
 
-console.log(data);
-
 let matrix = [];
 
 for (let i = 0; i < data.length; i++) {
-  let mPerson = [];
-  for (let j = 0; j < data[i]; j++) {
-
-    mPerson.push()
+  let person = [];
+  for (let campaign in data[i]) {
+    if (campaign != "email") {
+      if (data[i][campaign]) {
+        person.push(1);
+      }
+      else {
+        person.push(0);
+      }
+    }
   }
-  console.log(data[i]);
+  matrix.push(person);
 }
 
 console.log(matrix);
