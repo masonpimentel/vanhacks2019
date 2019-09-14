@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import TableComponent from './tableComponent';
 import OutputComponent from './outputComponent';
-// import jsonParser from './jsonParser.js';
 import data from './mock_data_1.json'
 
 
