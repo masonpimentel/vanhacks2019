@@ -5,6 +5,16 @@ import TableComponent from './tableComponent';
 import OutputComponent from './outputComponent';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleTruthToggle = this.handleTruthToggle.bind(this);
+    this.state = {truthTable: []};
+  }
+
+  handleTruthToggle(newTruthTable) {
+    this.setState({newTruthTable})
+  }
+
   render() {
     return (
       <div className="App">
@@ -15,8 +25,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <TableComponent/>
-        <OutputComponent/>
+        <TableComponent handleTruthToggle={this.handleTruthToggle}/>
+        <OutputComponent truthTable={this.truthTable}/>
       </div>
     );
   }

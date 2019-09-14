@@ -3,6 +3,8 @@ import './outputComponent.css';
 
 class OutputComponent extends Component {
     render() {
+        const truthTable = this.props.truthTable;
+        // TODO: Call match function with truthTable
         return (
         <div className="OutputComponent">
             <div className="Output-header">
