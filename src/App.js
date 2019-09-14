@@ -3,28 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import TableComponent from './tableComponent';
 import OutputComponent from './outputComponent';
-import data from './mock_data_1.json'
-
+import './parseData'
 
 class App extends Component {
   render() {
-    console.log(data)
-    var matrix = []
-
-    // for (let i = 0; i < data.length; i++) {
-    //   console.log(data[i].email)
-    // }
-  
-    for (let i = 0; i < data.length; i++) {
-      matrix[i] = [];
-      for(var j=0; j<9; j++) {
-          matrix[i][j] = data.email;
-      }
-    }
-
-    // for (var property1 in data) {
-    //   console.log(data[property1]);
-    // }
 
     return (
       <div className="App">
