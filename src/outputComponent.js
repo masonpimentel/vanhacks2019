@@ -91,6 +91,8 @@ class OutputComponent extends Component {
             var recommended_User = {
                 identity: identity_arr[targetIdx],
                 data: [],
+                total_sims: 0,
+                total_comps: 0,
                 weighted_avg: 0.00
             };
             data_matrix.forEach((referenceDonor, referenceIdx) => {
@@ -116,7 +118,7 @@ class OutputComponent extends Component {
             });
             var average_value = 0;
             var total_similarities = 0;
-            var total_comparisons
+            var total_comparisons = 0;
             recommended_User.data.forEach((user_data, index) => {
                 if(user_data.likelyTo == false) {
                     average_value += (1.0 - user_data.chance);
@@ -127,7 +129,9 @@ class OutputComponent extends Component {
                 total_similarities += user_data.similarities;
                 total_comparisons += user_data.comparisons;
             });
-            recommended_User.weighted_avg = (this.findProbability(total_similarities, total_comparisons));
+            recommended_User.total_sims = total_similarities;
+            recommended_User.total_comps = total_comparisons;
+            recommended_User.weighted_avg = this.findProbability(average_value, total_similarities);
             probabilityArr.recommendations.push(recommended_User);
         });
         return probabilityArr;
@@ -136,7 +140,7 @@ class OutputComponent extends Component {
     render() {
         const { matrix, campaign, users } = this.props;
         console.log(this.getPotentialDonors(1, matrix));
-
+        console.log(this.buildProbabilityArray(matrix,users,campaign))
         const rows = this.res.map((el, i) =>
             <tr key={i}>
                 <td>{el.email}</td>
