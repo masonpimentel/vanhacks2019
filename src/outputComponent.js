@@ -25,7 +25,12 @@ class OutputComponent extends Component {
         // return potentials;
     }
     printMatrix = (matrix) => {
-        var data = matrix;
+        var data = []
+        matrix.forEach((donations, index1) => {
+            donations.forEach((value, index2) => {
+                (value === null ? data.push("null") : data.push(value));
+            });
+        });
         return data;
     }
 
