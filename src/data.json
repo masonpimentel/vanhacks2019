@@ -1,9 +1,9 @@
 [
     {
         "email": "bradtke.trey@yahoo.com",
-        "campaign_1": false,
-        "campaign_2": false,
-        "campaign_3": true,
+        "campaign_1": null,
+        "campaign_2": null ,
+        "campaign_3": null,
         "campaign_4": false,
         "campaign_5": true,
         "campaign_6": true,

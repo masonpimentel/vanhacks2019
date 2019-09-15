@@ -15,7 +15,7 @@ class TableComponent extends Component {
             if (data === 1) {
                 htmlTable.push(<td><input id={index + ' ' + columnIndex} onClick={(e) => this.handleChange(e, data)} type='checkbox' checked/>{data}</td>);
             } else {
-                htmlTable.push(<td><input id={index + ' ' + columnIndex} onClick={(e) => this.handleChange(e, data)} type='checkbox' unchecked/>{data}</td>);
+                htmlTable.push(<td><input id={index + ' ' + columnIndex} onClick={(e) => this.handleChange(e, data)} type='checkbox' unchecked/> {data === 0 ? 0 : 'null'}</td>);
             }
         });
         return htmlTable

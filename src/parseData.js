@@ -30,7 +30,7 @@ export function fetchMatrix () {
           person.push(1);
         }
         else {
-          person.push(0);
+          data[i][campaign] === null ? person.push(null) : person.push(0)
         }
       }
     }
