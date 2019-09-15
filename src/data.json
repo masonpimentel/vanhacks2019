@@ -15,7 +15,7 @@
     {
         "email": "yblanda@gerlach.com",
         "campaign_1": true,
-        "campaign_2": true,
+        "campaign_2": null,
         "campaign_3": true,
         "campaign_4": false,
         "campaign_5": true,
@@ -28,7 +28,7 @@
     {
         "email": "herta.haag@haley.com",
         "campaign_1": false,
-        "campaign_2": false,
+        "campaign_2": null,
         "campaign_3": false,
         "campaign_4": true,
         "campaign_5": false,

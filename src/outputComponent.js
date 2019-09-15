@@ -10,21 +10,14 @@ class OutputComponent extends Component {
     getPotentialDonors = (campaignIdx, matrix) =>   {
         var potentials = [];
         matrix.forEach((donations, idx) => {
-            if(donations[campaignIdx] == 0) {
+            if(donations[campaignIdx] == null) {
                 potentials.push(idx);
             }
         });
         return potentials;
-        // var potentials2 = function() {
-        //     for (let [idx, donations] in matrix.entries())  {
-        //         if(donations[campaignIdx] == 0)    {
-        //             potentials.push(idx);
-        //         }
-        //     }
-        // }
-        // return potentials;
     }
-    printMatrix = (matrix) => {
+    buildMatrix = (matrix) => {
+        // for debugging
         var data = []
         matrix.forEach((donations, index1) => {
             donations.forEach((value, index2) => {
@@ -34,19 +27,34 @@ class OutputComponent extends Component {
         return data;
     }
 
-    howSimilar(targetIdx, referenceIdx, campaignIdx, matrix) {
-        // since referenceIdx must have donated, matrix[referenceIdx][campaignIdx] == 1
-        // thus this always calculates how recommendable people[targetIdx] is according to [referenceIdx].
+    howSimilar(targetIdx, referenceIdx, matrix) {
         var totalComparisons = 0; 
+        var similarities = 0;
+        matrix[targetIdx].forEach((cause, curIdx) => {
+            let refCause = matrix[referenceIdx][curIdx];
+            if( cause === null || refCause === null )   {
+                // currently comparing for target campaign
+                // either target or reference user has no data
+                return;
+            }
+            if( cause === refCause )   {
+                // both target and reference user donated or rejected
+                similarities++;
+            }
+            // ignoring cases where not similar, increment totalComparison for weight
+            totalComparisons++;
+        });
+        return {similarities, totalComparisons};
     }
 
     render() {
         const { matrix, campaign, users } = this.props;
+        console.log(this.getPotentialDonors(1, matrix));
         return (
         <div className="OutputComponent">
             <div className="Output-header">
                 <h2>Output Component</h2>
-                <div>{this.printMatrix(matrix)}</div>
+                <div>{this.buildMatrix(matrix)}</div>
             </div>
         </div>
         );
