@@ -1,3 +1,11 @@
 .OutputComponent {
     display: inline-block;
 }
+
+.dropdown {
+    padding-bottom: 10px;
+}
+
+#dropdown-basic-button {
+    width: auto;
+}
