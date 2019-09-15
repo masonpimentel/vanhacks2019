@@ -6,8 +6,19 @@ import Table from "react-bootstrap/Table";
 
 class OutputComponent extends Component {
     getTargetCampaign = () => {
-        return 2;
-    }
+        console.log("got : " + this.props.targetCampaign);
+        return this.props.targetCampaign;
+    };
+
+    setTargetCampaign = (e) => {
+        let tCampaign = e.target.getAttribute("value");
+        for(let i = 0; i < this.props.campaign.length; i++) {
+            if (this.props.campaign[i] == tCampaign) {
+                this.props.targetCampaign = i;
+                break;
+            }
+        }
+    };
 
     getBoolean = (data_matrix, userIdx, campaignIdx) => {
         if(data_matrix[userIdx][campaignIdx] === null)  {
@@ -64,6 +75,11 @@ class OutputComponent extends Component {
 
     buildProbabilityArray = (data_matrix, identity_arr, campaign_arr) => {
         var targetCampaign = this.getTargetCampaign();
+
+        if (targetCampaign < 0) {
+            return [];
+        }
+
         var probabilityArr = {
             campaignIndex: targetCampaign,
             campaignName: campaign_arr[targetCampaign],
@@ -128,13 +144,25 @@ class OutputComponent extends Component {
         return probabilityArr;
     };
 
+    buildHeader(targetCampaign) {
+        if (targetCampaign > 0) {
+            return (
+                <h2>Campaign {targetCampaign}</h2>
+            )
+        }
+    }
+
     buildRows(matrix, users, campaign) {
         let rowData = this.buildProbabilityArray(matrix, users, campaign).recommendations;
+
+        if (!rowData || rowData.length == 0) {
+            return;
+        }
 
         return rowData.map((el, i) =>
             <tr key={i}>
                 <td>{el.identity}</td>
-                <td>{el.weighted_avg}</td>
+                <td>{(el.weighted_avg.toFixed(2) * 100) + "%"}</td>
             </tr>
         );
     }
@@ -142,17 +170,17 @@ class OutputComponent extends Component {
     render() {
         const { matrix, campaign, users } = this.props;
         
-        const dropdown = <DropdownButton id="dropdown-basic-button" title="Campaigns">
+        const dropdown = <DropdownButton onClick={this.setTargetCampaign} id="dropdown-basic-button" title="Campaigns">
             {campaign.map((campaign) => <Dropdown.Item value={campaign}>{campaign}</Dropdown.Item>)}
         </DropdownButton>
 
         return (
         <div className="OutputComponent">
+            <div>{dropdown}</div>
             <div className="Output-header">
-                <h2>Campaign {this.getTargetCampaign()}</h2>
+                {this.buildHeader(this.getTargetCampaign())}
                 {/* <h2>Campaign {this.campaignToFocus()}</h2> */}
             </div>
-            <div>{dropdown}</div>
             <Table responsive striped bordered hover size="sm">
                 <thead>
                     <tr>
