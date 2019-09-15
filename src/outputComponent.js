@@ -5,21 +5,6 @@ import './outputComponent.css';
 import Table from "react-bootstrap/Table";
 
 class OutputComponent extends Component {
-    res = [
-        {
-            "email": "user1@d.com",
-            "probability": .45
-        },
-        {
-            "email": "user2@d.com",
-            "probability": .32
-        }
-    ];
-
-    getEmail = (index, identities) => {
-        return identities[index];
-    }
-
     getTargetCampaign = () => {
         return 2;
     }
@@ -141,19 +126,21 @@ class OutputComponent extends Component {
             probabilityArr.recommendations.push(recommended_User);
         });
         return probabilityArr;
+    };
+
+    buildRows(matrix, users, campaign) {
+        let rowData = this.buildProbabilityArray(matrix, users, campaign).recommendations;
+
+        return rowData.map((el, i) =>
+            <tr key={i}>
+                <td>{el.identity}</td>
+                <td>{el.weighted_avg}</td>
+            </tr>
+        );
     }
 
     render() {
         const { matrix, campaign, users } = this.props;
-        console.log(this.getPotentialDonors(1, matrix));
-        console.log(this.buildProbabilityArray(matrix, users, campaign));
-        console.log(JSON.stringify(this.buildProbabilityArray(matrix, users, campaign)));
-        const rows = this.res.map((el, i) =>
-            <tr key={i}>
-                <td>{el.email}</td>
-                <td>{el.probability}</td>
-            </tr>
-        );
         
         const dropdown = <DropdownButton id="dropdown-basic-button" title="Campaigns">
             {campaign.map((campaign) => <Dropdown.Item value={campaign}>{campaign}</Dropdown.Item>)}
@@ -162,8 +149,8 @@ class OutputComponent extends Component {
         return (
         <div className="OutputComponent">
             <div className="Output-header">
+                <h2>Campaign {this.getTargetCampaign()}</h2>
                 {/* <h2>Campaign {this.campaignToFocus()}</h2> */}
-                {/*<div>{this.buildMatrix(matrix)}</div>*/}
             </div>
             <div>{dropdown}</div>
             <Table responsive striped bordered hover size="sm">
@@ -174,7 +161,7 @@ class OutputComponent extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                {rows}
+                {this.buildRows(matrix, users, campaign)}
                 </tbody>
             </Table>
         </div>
