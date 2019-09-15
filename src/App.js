@@ -4,6 +4,11 @@ import './App.css';
 import TableComponent from './tableComponent';
 import OutputComponent from './outputComponent';
 import { fetchUsers, fetchCampaigns, fetchMatrix } from './parseData'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 class App extends Component {
 
@@ -32,15 +37,23 @@ handleTruthToggle = (rowIndex, colIndex) => {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <TableComponent handleTruthToggle={this.handleTruthToggle} {...this.state}/>
-        <OutputComponent {...this.state}/>
+          <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="#home">
+            {' Donadar'}
+            </Navbar.Brand>
+          </Navbar>
+            <Container>
+              <Row>
+                <Col>
+                <TableComponent handleTruthToggle={this.handleTruthToggle} {...this.state}/>
+                </Col>
+                </Row>
+                <Row>
+                <Col>
+                <OutputComponent {...this.state}/>
+                </Col>
+                </Row>
+            </Container>
       </div>
     );
   }
