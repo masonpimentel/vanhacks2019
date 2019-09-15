@@ -43,6 +43,7 @@ class TableComponent extends Component {
         let campaignRow = campaign.map(value => {
             return <th>{value}</th>
         });
+        campaignRow.splice(0, 0, <th></th>);
 
         let dataRowAll = [];
         let dataRow = [];
