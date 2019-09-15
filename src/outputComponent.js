@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import './outputComponent.css';
 
-function testing(someContent)  {
-    console.log(someContent);
-}
-
 class OutputComponent extends Component {
     render() {
         const MATRIX = this.props.matrix_data;
