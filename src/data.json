@@ -16,7 +16,7 @@
         "email": "yblanda@gerlach.com",
         "campaign_1": true,
         "campaign_2": null,
-        "campaign_3": true,
+        "campaign_3": null,
         "campaign_4": false,
         "campaign_5": true,
         "campaign_6": false,
@@ -117,7 +117,7 @@
         "campaign_10": true
     },
         {
-        "email": "bob.smith@gmail.com",
+        "email": "VictorsLeg@yahoo.com",
         "campaign_1": true,
         "campaign_2": true,
         "campaign_3": true,
