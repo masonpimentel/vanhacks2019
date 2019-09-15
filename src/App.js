@@ -4,7 +4,7 @@ import './App.css';
 import TableComponent from './tableComponent';
 import OutputComponent from './outputComponent';
 import './parseData'
-import { matrix } from './parseData';
+import { users, campaigns, matrix } from './parseData';
 
 
 class App extends Component {
@@ -29,7 +29,7 @@ state = {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <TableComponent handleTruthToggle={this.handleTruthToggle}/>
-        <OutputComponent matrix={this.matrix}/>
+        <OutputComponent matrix_data={ matrix } user_data={ users } campaign_data={ campaigns }/>
       </div>
     );
   }
