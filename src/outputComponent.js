@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import './outputComponent.css';
+import Table from "react-bootstrap/Table";
 
 class OutputComponent extends Component {
+    res = [
+        {
+            "email": "user1@d.com",
+            "probability": .45
+        },
+        {
+            "email": "user2@d.com",
+            "probability": .32
+        }
+    ];
 
     getEmail = (index, identities) => {
         return identities[index];
@@ -123,21 +134,48 @@ class OutputComponent extends Component {
     render() {
         const { matrix, campaign, users } = this.props;
         console.log(this.getPotentialDonors(1, matrix));
-        console.log(this.buildProbabilityArray(matrix, users, campaign));
-        console.log(JSON.stringify(this.buildProbabilityArray(matrix, users, campaign)));
+
+        const rows = this.res.map((el, i) =>
+            <tr key={i}>
+                <td>{el.email}</td>
+                <td>{el.probability}</td>
+            </tr>
+        );
+
         return (
         <div className="OutputComponent">
             <div className="Output-header">
-                <h2>Output Component</h2>
-                <div>{this.buildMatrix(matrix)}</div>
-                <div></div>
+                <h2>Campaign {this.campaignToFocus()}</h2>
+                {/*<div>{this.buildMatrix(matrix)}</div>*/}
             </div>
+            <Table responsive striped bordered hover size="sm">
+                <thead>
+                    <tr>
+                        <th>Person</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {rows}
+                </tbody>
+            </Table>
         </div>
         );
     }
 }
 
 export default OutputComponent;
+
+        // console.log(this.buildProbabilityArray(matrix, users, campaign));
+        // console.log(JSON.stringify(this.buildProbabilityArray(matrix, users, campaign)));
+        // return (
+        // <div className="OutputComponent">
+        //     <div className="Output-header">
+        //         <h2>Output Component</h2>
+        //         <div>{this.buildMatrix(matrix)}</div>
+        //         <div></div>
+
+
         // TODO: Call match function with truthTable
 //         function campaignToFocus()  {
 //             // returns an index
