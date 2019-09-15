@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './outputComponent.css';
+import Table from "react-bootstrap/Table";
 
 class OutputComponent extends Component {
     res = [
@@ -71,14 +72,20 @@ class OutputComponent extends Component {
         return (
         <div className="OutputComponent">
             <div className="Output-header">
-                <h2>Output Component</h2>
-                <div>{this.buildMatrix(matrix)}</div>
+                <h2>Campaign {this.campaignToFocus()}</h2>
+                {/*<div>{this.buildMatrix(matrix)}</div>*/}
             </div>
-            <table>
+            <Table responsive striped bordered hover size="sm">
+                <thead>
+                    <tr>
+                        <th>Person</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
                 <tbody>
                 {rows}
                 </tbody>
-            </table>
+            </Table>
         </div>
         );
     }
