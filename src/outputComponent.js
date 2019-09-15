@@ -3,21 +3,6 @@ import './outputComponent.css';
 import Table from "react-bootstrap/Table";
 
 class OutputComponent extends Component {
-    res = [
-        {
-            "email": "user1@d.com",
-            "probability": .45
-        },
-        {
-            "email": "user2@d.com",
-            "probability": .32
-        }
-    ];
-
-    getEmail = (index, identities) => {
-        return identities[index];
-    }
-
     getTargetCampaign = () => {
         return 2;
     }
@@ -131,21 +116,24 @@ class OutputComponent extends Component {
         return probabilityArr;
     };
 
-    render() {
-        const { matrix, campaign, users } = this.props;
-        console.log(this.getPotentialDonors(1, matrix));
+    buildRows(matrix, users, campaign) {
+        let rowData = this.buildProbabilityArray(matrix, users, campaign).recommendations;
 
-        const rows = this.res.map((el, i) =>
+        return rowData.map((el, i) =>
             <tr key={i}>
-                <td>{el.email}</td>
-                <td>{el.probability}</td>
+                <td>{el.identity}</td>
+                <td>{el.weighted_avg}</td>
             </tr>
         );
+    }
+
+    render() {
+        const { matrix, campaign, users } = this.props;
 
         return (
         <div className="OutputComponent">
             <div className="Output-header">
-                <h2>Campaign {this.campaignToFocus()}</h2>
+                <h2>Campaign {this.getTargetCampaign()}</h2>
                 {/*<div>{this.buildMatrix(matrix)}</div>*/}
             </div>
             <Table responsive striped bordered hover size="sm">
@@ -156,7 +144,7 @@ class OutputComponent extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                {rows}
+                {this.buildRows(matrix, users, campaign)}
                 </tbody>
             </Table>
         </div>
