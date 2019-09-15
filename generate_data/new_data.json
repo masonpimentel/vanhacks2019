@@ -1,0 +1,132 @@
+[
+    {
+        "email": "bradtke.trey@yahoo.com",
+        "campaign_1": false,
+        "campaign_2": null,
+        "campaign_3": true,
+        "campaign_4": false,
+        "campaign_5": null,
+        "campaign_6": false,
+        "campaign_7": true,
+        "campaign_8": false,
+        "campaign_9": true,
+        "campaign_10": true
+    },
+    {
+        "email": "yblanda@gerlach.com",
+        "campaign_1": true,
+        "campaign_2": true,
+        "campaign_3": true,
+        "campaign_4": false,
+        "campaign_5": true,
+        "campaign_6": null,
+        "campaign_7": true,
+        "campaign_8": null,
+        "campaign_9": false,
+        "campaign_10": false
+    },
+    {
+        "email": "herta.haag@haley.com",
+        "campaign_1": null,
+        "campaign_2": null,
+        "campaign_3": false,
+        "campaign_4": null,
+        "campaign_5": null,
+        "campaign_6": null,
+        "campaign_7": false,
+        "campaign_8": true,
+        "campaign_9": true,
+        "campaign_10": false
+    },
+    {
+        "email": "aemard@weber.info",
+        "campaign_1": null,
+        "campaign_2": null,
+        "campaign_3": false,
+        "campaign_4": true,
+        "campaign_5": null,
+        "campaign_6": null,
+        "campaign_7": true,
+        "campaign_8": true,
+        "campaign_9": false,
+        "campaign_10": false
+    },
+    {
+        "email": "genevieve26@yahoo.com",
+        "campaign_1": null,
+        "campaign_2": null,
+        "campaign_3": null,
+        "campaign_4": null,
+        "campaign_5": true,
+        "campaign_6": false,
+        "campaign_7": true,
+        "campaign_8": false,
+        "campaign_9": null,
+        "campaign_10": false
+    },
+    {
+        "email": "rleuschke@gmail.com",
+        "campaign_1": false,
+        "campaign_2": false,
+        "campaign_3": null,
+        "campaign_4": null,
+        "campaign_5": null,
+        "campaign_6": true,
+        "campaign_7": true,
+        "campaign_8": false,
+        "campaign_9": null,
+        "campaign_10": false
+    },
+    {
+        "email": "crooks.joshua@bradtke.biz",
+        "campaign_1": null,
+        "campaign_2": null,
+        "campaign_3": null,
+        "campaign_4": null,
+        "campaign_5": false,
+        "campaign_6": null,
+        "campaign_7": null,
+        "campaign_8": false,
+        "campaign_9": false,
+        "campaign_10": null
+    },
+    {
+        "email": "levi.sanford@gmail.com",
+        "campaign_1": false,
+        "campaign_2": false,
+        "campaign_3": false,
+        "campaign_4": null,
+        "campaign_5": false,
+        "campaign_6": true,
+        "campaign_7": false,
+        "campaign_8": true,
+        "campaign_9": true,
+        "campaign_10": false
+    },
+    {
+        "email": "hassie96@larkin.net",
+        "campaign_1": true,
+        "campaign_2": true,
+        "campaign_3": true,
+        "campaign_4": true,
+        "campaign_5": true,
+        "campaign_6": false,
+        "campaign_7": null,
+        "campaign_8": false,
+        "campaign_9": null,
+        "campaign_10": false
+    },
+        {
+        "email": "myrtle18@dach.biz",
+        "campaign_1": true,
+        "campaign_2": true,
+        "campaign_3": false,
+        "campaign_4": false,
+        "campaign_5": false,
+        "campaign_6": null,
+        "campaign_7": false,
+        "campaign_8": null,
+        "campaign_9": null,
+        "campaign_10": true
+    }
+]

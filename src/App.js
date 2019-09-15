@@ -34,7 +34,7 @@ handleTruthToggle = (rowIndex, colIndex) => {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <TableComponent handleTruthToggle={this.handleTruthToggle} {...this.state}/>
-        <OutputComponent matrix={this.state.matrix} campaign={this.state.campaign} people={this.state.people}/>
+        <OutputComponent {...this.state}/>
       </div>
     );
   }

@@ -24,6 +24,10 @@ class OutputComponent extends Component {
         // }
         // return potentials;
     }
+    printMatrix = (matrix) => {
+        var data = matrix;
+        return data;
+    }
 
     howSimilar(targetIdx, referenceIdx, campaignIdx, matrix) {
         // since referenceIdx must have donated, matrix[referenceIdx][campaignIdx] == 1
@@ -32,15 +36,16 @@ class OutputComponent extends Component {
     }
 
     render() {
+        const { matrix, campaign, users } = this.props;
         return (
         <div className="OutputComponent">
             <div className="Output-header">
                 <h2>Output Component</h2>
-                <h2>matrix</h2>
+                <div>{this.printMatrix(matrix)}</div>
             </div>
         </div>
         );
-    };
+    }
 }
 
 export default OutputComponent;
