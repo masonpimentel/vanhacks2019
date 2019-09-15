@@ -125,7 +125,7 @@ class OutputComponent extends Component {
         return rowData.map((el, i) =>
             <tr key={i}>
                 <td>{el.identity}</td>
-                <td>{el.weighted_avg}</td>
+                <td>{(el.weighted_avg.toFixed(2) * 100) + "%"}</td>
             </tr>
         );
     }
