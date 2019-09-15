@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 import './outputComponent.css';
 import Table from "react-bootstrap/Table";
 
@@ -143,13 +145,18 @@ class OutputComponent extends Component {
                 <td>{el.probability}</td>
             </tr>
         );
+        
+        const dropdown = <DropdownButton id="dropdown-basic-button" title="Campaigns">
+            {campaign.map((campaign) => <Dropdown.Item value={campaign}>{campaign}</Dropdown.Item>)}
+        </DropdownButton>
 
         return (
         <div className="OutputComponent">
             <div className="Output-header">
-                <h2>Campaign {this.campaignToFocus()}</h2>
+                {/* <h2>Campaign {this.campaignToFocus()}</h2> */}
                 {/*<div>{this.buildMatrix(matrix)}</div>*/}
             </div>
+            <div>{dropdown}</div>
             <Table responsive striped bordered hover size="sm">
                 <thead>
                     <tr>
