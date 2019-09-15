@@ -1,13 +1,7 @@
 import data from './data.json'
 
-<<<<<<< HEAD
 export function fetchUsers () {
   var users = [];
-=======
-var users = []
-var campaigns = []
-export let matrix = [];
->>>>>>> master
 
   for (let i = 0; i < data.length; i++) {
     users[i] = data[i].email;
