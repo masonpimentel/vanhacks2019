@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import TableComponent from './tableComponent';
 import OutputComponent from './outputComponent';
+import './parseData'
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ state = {
   }
 
   render() {
+
     return (
       <div className="App">
         <div className="App-header">
