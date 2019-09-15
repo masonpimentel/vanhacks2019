@@ -15,10 +15,16 @@ state = {
 
 handleTruthToggle = (rowIndex, colIndex) => {
   const { matrix } = this.state;
-  if (this.state.matrix[rowIndex][colIndex] == 1) {
-    matrix[rowIndex][colIndex] = 0;
-  } else {
-    matrix[rowIndex][colIndex] = 1;
+  switch (this.state.matrix[rowIndex][colIndex]) {
+    case 0:
+      matrix[rowIndex][colIndex] = 1;
+      break
+    case 1:
+      matrix[rowIndex][colIndex] = null;
+      break
+    default:
+      matrix[rowIndex][colIndex] = 0;
+      break
   }
   this.setState(matrix);
 }
