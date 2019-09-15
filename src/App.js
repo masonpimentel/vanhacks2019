@@ -15,7 +15,8 @@ class App extends Component {
 state = {
   matrix: fetchMatrix(),
   campaign: fetchCampaigns(),
-  users: fetchUsers()
+  users: fetchUsers(),
+    targetCampaign: -1
 }
 
 handleTruthToggle = (rowIndex, colIndex) => {

@@ -5,18 +5,16 @@ import './outputComponent.css';
 import Table from "react-bootstrap/Table";
 
 class OutputComponent extends Component {
-    targetCampaign = -1;
-
     getTargetCampaign = () => {
-        console.log("got : " + this.targetCampaign);
-        return this.targetCampaign;
+        console.log("got : " + this.props.targetCampaign);
+        return this.props.targetCampaign;
     };
 
     setTargetCampaign = (e) => {
         let tCampaign = e.target.getAttribute("value");
         for(let i = 0; i < this.props.campaign.length; i++) {
             if (this.props.campaign[i] == tCampaign) {
-                this.targetCampaign = i;
+                this.props.targetCampaign = i;
                 break;
             }
         }
@@ -77,6 +75,11 @@ class OutputComponent extends Component {
 
     buildProbabilityArray = (data_matrix, identity_arr, campaign_arr) => {
         var targetCampaign = this.getTargetCampaign();
+
+        if (targetCampaign < 0) {
+            return [];
+        }
+
         var probabilityArr = {
             campaignIndex: targetCampaign,
             campaignName: campaign_arr[targetCampaign],
@@ -151,6 +154,10 @@ class OutputComponent extends Component {
 
     buildRows(matrix, users, campaign) {
         let rowData = this.buildProbabilityArray(matrix, users, campaign).recommendations;
+
+        if (!rowData || rowData.length == 0) {
+            return;
+        }
 
         return rowData.map((el, i) =>
             <tr key={i}>
