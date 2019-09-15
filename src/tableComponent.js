@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
-import Form from 'react-bootstrap/Form'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import './tableComponent.css';
 
 class TableComponent extends Component {
@@ -15,11 +16,11 @@ class TableComponent extends Component {
 
         matrix[index].forEach((data, columnIndex) => {
             if (data === 1) {
-                window.console.log("IF 1 Data = " + data + " index = " + index + " " + columnIndex);
-                htmlTable.push(<td><Form.Check id={index + ' ' + columnIndex} onChange={(e) => this.handleChange(e, data, matrix)} type='checkbox' checked/>{data}</td>);
+                htmlTable.push(<td><Button class="btn-state" variant="success" size="sm" id={index + ' ' + columnIndex} onClick={(e) => this.handleChange(e, data, matrix)} type='checkbox'>{data}</Button></td>);
+            } else if (data === 0) {
+                htmlTable.push(<td><Button class="btn-state" variant="danger" size="sm" id={index + ' ' + columnIndex} onClick={(e) => this.handleChange(e, data, matrix)} type='checkbox'>{data}</Button> </td>);
             } else {
-                window.console.log("ELSE Data = " + data + " index = " + index + " " + columnIndex);
-                htmlTable.push(<td><Form.Check id={index + ' ' + columnIndex} onChange={(e) => this.handleChange(e, data, matrix)} type='checkbox'/> {data === 0 ? 0 : 'null'}</td>);
+                htmlTable.push(<td><Button class="btn-state" variant="warning" size="sm" id={index + ' ' + columnIndex} onClick={(e) => this.handleChange(e, data, matrix)} type='checkbox'>Pending</Button> </td>);
             }
         });
         return htmlTable;

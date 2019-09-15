@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 import './outputComponent.css';
 import Table from "react-bootstrap/Table";
 
@@ -111,6 +113,7 @@ class OutputComponent extends Component {
                 total_comparisons += user_data.comparisons;
             });
             recommended_User.weighted_avg = this.findProbability(total_similarities, total_comparisons);
+            average_value = average_value / total_similarities;
             probabilityArr.recommendations.push(recommended_User);
         });
         return probabilityArr;
@@ -129,13 +132,18 @@ class OutputComponent extends Component {
 
     render() {
         const { matrix, campaign, users } = this.props;
+        
+        const dropdown = <DropdownButton id="dropdown-basic-button" title="Campaigns">
+            {campaign.map((campaign) => <Dropdown.Item value={campaign}>{campaign}</Dropdown.Item>)}
+        </DropdownButton>
 
         return (
         <div className="OutputComponent">
             <div className="Output-header">
                 <h2>Campaign {this.getTargetCampaign()}</h2>
-                {/*<div>{this.buildMatrix(matrix)}</div>*/}
+                {/* <h2>Campaign {this.campaignToFocus()}</h2> */}
             </div>
+            <div>{dropdown}</div>
             <Table responsive striped bordered hover size="sm">
                 <thead>
                     <tr>
