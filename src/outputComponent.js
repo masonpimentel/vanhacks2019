@@ -36,51 +36,52 @@ class OutputComponent extends Component {
     }
 
     render() {
-        // TODO: Call match function with truthTable
-        function campaignToFocus()  {
-            // returns an index
-            return 2;
-        }
-        function getPotentialDonors()   {
-            var potentials = [];
-            for(let i = 0; i < USERS.length; i++)   {
-                if(MATRIX[i][campaignToFocus()] == 0)    {
-                    potentials.push(i);
-                }
-            }
-            return potentials;
-        }
-        function isSimilar(targetIdx, referenceIdx) {
-
-        }
-
-
-
-        let potentials = getPotentialDonors();
         return (
         <div className="OutputComponent">
             <div className="Output-header">
                 <h2>Output Component</h2>
-                <p>{MATRIX}</p>
-                <p>{potentials}</p>
-                <p>{CAMPAIGNS}</p>
+                <h2>matrix</h2>
             </div>
         </div>
         );
-    }
+    };
 }
+
+export default OutputComponent;
+        // TODO: Call match function with truthTable
+//         function campaignToFocus()  {
+//             // returns an index
+//             return 2;
+//         }
+//         function getPotentialDonors()   {
+//             var potentials = [];
+//             for(let i = 0; i < USERS.length; i++)   {
+//                 if(MATRIX[i][campaignToFocus()] == 0)    {
+//                     potentials.push(i);
+//                 }
+//             }
+//             return potentials;
+//         }
+//         function isSimilar(targetIdx, referenceIdx) {
+
+//         }
+
+
+
+//         let potentials = getPotentialDonors();
+//         return (
+//         <div className="OutputComponent">
+//             <div className="Output-header">
+//                 <h2>Output Component</h2>
+//                 <p>{MATRIX}</p>
+//                 <p>{potentials}</p>
+//                 <p>{CAMPAIGNS}</p>
+//             </div>
+//         </div>
+//         );
+//     }
+// }
 
 // const OutputComponent = ({ matrix2 }) => {
 //     //console.log(matrix2);
 //     testing("asd");
-//     return (
-//     <div className="OutputComponent">
-//         <div className="Output-header">
-//             <h2>Output Component</h2>
-//             <h2>{matrix2}</h2>
-//         </div>
-//     </div>
-//     );
-// };
-
-export default OutputComponent
