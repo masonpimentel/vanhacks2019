@@ -13,7 +13,7 @@ class OutputComponent extends Component {
         <div className="OutputComponent">
             <div className="Output-header">
                 <h2>Output Component</h2>
-                <h2>{mtx}</h2>
+                <h2>{matrix}</h2>
             </div>
         </div>
         );
