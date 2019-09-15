@@ -37,7 +37,7 @@ class TableComponent extends Component {
         var htmlTable = [];
         var tableData = this.state.data;
         tableData[index].forEach(data => {
-            htmlTable.push(<td>{data}</td>)
+            htmlTable.push(<td><input type='radio'/>{data}</td>)
         });
         return htmlTable
     }
