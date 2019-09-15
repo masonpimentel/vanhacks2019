@@ -8,7 +8,7 @@ class TableComponent extends Component {
             [ 0, 1, 0 ],
             [ 1, 1, 1 ],
         ],
-        campaign: [ "vic", "vic's ankles", "vic's lungs" ],
+        campaign: [" ", "vic", "vic's ankles", "vic's lungs" ],
         people: [ "brian", "elliot", "mason" ],
     };
 
@@ -34,10 +34,11 @@ class TableComponent extends Component {
     }
 
     createTableRow = (index) => {
-        var htmlTable = [];
+        var people = this.state.people;
+        var htmlTable = [<th>{people[index]}</th>];
         var tableData = this.state.data;
         tableData[index].forEach(data => {
-            htmlTable.push(<td><input type='radio'/>{data}</td>)
+            htmlTable.push(<td><input type='checkbox'/>{data}</td>)
         });
         return htmlTable
     }
@@ -63,13 +64,14 @@ class TableComponent extends Component {
             <div className="TC-header">
                 <h2>Table Component</h2>
                 {[<p>sfjdfs</p>, <p>sdfdsaf</p>]}
-                <tr>{campaignRow}</tr>
-                <table><tbody>
+                <table><thead>
+                    <tr>{campaignRow}</tr>
+                </thead>
+                <tbody>
                     {data.map((value, index) => {
                         return <tr>{this.createTableRow(index)}</tr>;
                     })}
-
-                    </tbody></table>
+                </tbody></table>
             </div>
         </div>
         );
