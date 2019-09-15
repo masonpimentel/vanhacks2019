@@ -13,31 +13,11 @@ class TableComponent extends Component {
         people: [ "brian", "elliot", "mason" ],
     };
 
-    handleChange = () => {
+    handleChange = (data) => {
         // TODO figure out arguments (single value or entire table?)
-        console.log("handleChange()");
-        this.props.handleTruthToggle();
-    }
-
-    createTable = () => {
-        var htmlTable = '<table>',
-            tableData = this.state.data;
-        htmlTable += '<tbody>';
-        tableData.forEach(function(rowData) {
-            htmlTable += '<tr>';
-            rowData.forEach(function(cellData) {
-              if (cellData == 1) {
-                htmlTable += '<td><input type="checkbox"/></td>';
-                htmlTable += '<td><input type="checkbox"/></td>';
-                console.log(htmlTable);
-              } else {
-                htmlTable += '<td><input type="text"/></td>';
-              }
-          });
-          htmlTable += '</tr>';
-        });
-        htmlTable += '</tbody></table>'
-        return htmlTable; 
+        console.log("handleChange() + " + data);
+        console.log("Data = " + this.state.data[1][1]);
+        // this.props.handleTruthToggle();
     }
 
     createTableRow = (index) => {
@@ -45,12 +25,17 @@ class TableComponent extends Component {
         var htmlTable = [<th>{people[index]}</th>];
         var tableData = this.state.data;
         tableData[index].forEach(data => {
-            htmlTable.push(<td><input type='checkbox'/>{data}</td>)
+            if (data === 1) {
+                htmlTable.push(<td><input onClick={() => this.handleChange(data)} type='checkbox' checked/>{data}</td>);
+            } else {
+                htmlTable.push(<td><input onClick={() => this.handleChange(data)} type='checkbox' unchecked/>{data}</td>);
+            }
         });
         return htmlTable
     }
 
     render() {
+        console.log("Called render");
         const { data, campaign, people } = this.state;
         let campaignRow = campaign.map(value => {
             return <th>{value}</th>
@@ -69,7 +54,6 @@ class TableComponent extends Component {
             <div className="TC-header">
                 <h2>Table Component</h2>
                 <button onClick={this.handleChange}>Click me!</button>
-                {[<p>sfjdfs</p>, <p>sdfdsaf</p>]}
                 <table><thead>
                     <tr>{campaignRow}</tr>
                 </thead>
