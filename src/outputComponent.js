@@ -6,11 +6,9 @@ function testing(someContent)  {
 }
 
 class OutputComponent extends Component {
-    //console.log(matrix2);
-    render()    {
-        const MATRIX = this.props.matrix2;
-
-        testing();
+    render() {
+        const matrix = this.props.matrix;
+        // TODO: Call match function with truthTable
         return (
         <div className="OutputComponent">
             <div className="Output-header">
