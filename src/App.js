@@ -10,32 +10,20 @@ class App extends Component {
 state = {
   matrix: fetchMatrix(),
   campaign: fetchCampaigns(),
-  people: fetchUsers()
+  users: fetchUsers()
 }
 
-  // state = {
-  //     matrix: [
-  //         [ 0, 0, 1 ],
-  //         [ 0, 1, 0 ],
-  //         [ 1, 1, 1 ],
-  //     ],
-  //     campaign: [" ", "vic", "vic's ankles", "vic's lungs" ],
-  //     people: [ "brian", "elliot", "mason" ],
-  // };
-
-  handleTruthToggle = (rowIndex, colIndex) => {
-    const { matrix } = this.state;
-    if (this.state.matrix[rowIndex][colIndex] == 1) {
-      matrix[rowIndex][colIndex] = 0;
-    } else {
-      matrix[rowIndex][colIndex] = 1;
-    }
-    this.setState(matrix);
+handleTruthToggle = (rowIndex, colIndex) => {
+  const { matrix } = this.state;
+  if (this.state.matrix[rowIndex][colIndex] == 1) {
+    matrix[rowIndex][colIndex] = 0;
+  } else {
+    matrix[rowIndex][colIndex] = 1;
   }
+  this.setState(matrix);
+}
 
   render() {
-    console.log("State: " + this.state.people);
-
     return (
       <div className="App">
         <div className="App-header">
