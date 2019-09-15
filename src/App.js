@@ -46,7 +46,7 @@ state = {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <TableComponent handleTruthToggle={this.handleTruthToggle} matrix={this.state.matrix} campaign={this.state.campaign} people={this.state.people}/>
-        <OutputComponent matrix={this.matrix}/>
+        <OutputComponent matrix={this.state.matrix} campaign={this.state.campaign} people={this.state.people}/>
       </div>
     );
   }

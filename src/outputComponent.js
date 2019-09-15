@@ -6,11 +6,36 @@ function testing(someContent)  {
 }
 
 class OutputComponent extends Component {
+
+    campaignToFocus = () => {
+        return 2;
+    }
+
+    getPotentialDonors = (campaignIdx, matrix) =>   {
+        var potentials = [];
+        matrix.forEach((donations, idx) => {
+            if(donations[campaignIdx] == 0) {
+                potentials.push(idx);
+            }
+        });
+        return potentials;
+        // var potentials2 = function() {
+        //     for (let [idx, donations] in matrix.entries())  {
+        //         if(donations[campaignIdx] == 0)    {
+        //             potentials.push(idx);
+        //         }
+        //     }
+        // }
+        // return potentials;
+    }
+
+    howSimilar(targetIdx, referenceIdx, campaignIdx, matrix) {
+        // since referenceIdx must have donated, matrix[referenceIdx][campaignIdx] == 1
+        // thus this always calculates how recommendable people[targetIdx] is according to [referenceIdx].
+        var totalComparisons = 0; 
+    }
+
     render() {
-        const MATRIX = this.props.matrix_data;
-        const USERS = this.props.user_data;
-        const CAMPAIGNS = this.props.campaign_data;
-        
         // TODO: Call match function with truthTable
         function campaignToFocus()  {
             // returns an index
