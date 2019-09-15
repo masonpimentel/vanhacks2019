@@ -3,19 +3,38 @@ import logo from './logo.svg';
 import './App.css';
 import TableComponent from './tableComponent';
 import OutputComponent from './outputComponent';
-import './parseData'
+import { fetchUsers, fetchCampaigns, fetchMatrix } from './parseData'
 
 class App extends Component {
 
 state = {
-  matrix: []
+  matrix: fetchMatrix(),
+  campaign: fetchCampaigns(),
+  people: fetchUsers()
 }
 
-  handleTruthToggle = (newMatrix) => {
-    this.setState({newMatrix})
+  // state = {
+  //     matrix: [
+  //         [ 0, 0, 1 ],
+  //         [ 0, 1, 0 ],
+  //         [ 1, 1, 1 ],
+  //     ],
+  //     campaign: [" ", "vic", "vic's ankles", "vic's lungs" ],
+  //     people: [ "brian", "elliot", "mason" ],
+  // };
+
+  handleTruthToggle = (rowIndex, colIndex) => {
+    const { matrix } = this.state;
+    if (this.state.matrix[rowIndex][colIndex] == 1) {
+      matrix[rowIndex][colIndex] = 0;
+    } else {
+      matrix[rowIndex][colIndex] = 1;
+    }
+    this.setState(matrix);
   }
 
   render() {
+    console.log("State: " + this.state.people);
 
     return (
       <div className="App">
@@ -26,7 +45,7 @@ state = {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <TableComponent handleTruthToggle={this.handleTruthToggle}/>
+        <TableComponent handleTruthToggle={this.handleTruthToggle} matrix={this.state.matrix} campaign={this.state.campaign} people={this.state.people}/>
         <OutputComponent matrix={this.matrix}/>
       </div>
     );

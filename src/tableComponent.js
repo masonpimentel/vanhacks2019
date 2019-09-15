@@ -13,30 +13,33 @@ class TableComponent extends Component {
         people: [ "brian", "elliot", "mason" ],
     };
 
-    handleChange = (data) => {
-        // TODO figure out arguments (single value or entire table?)
-        console.log("handleChange() + " + data);
-        console.log("Data = " + this.state.data[1][1]);
-        // this.props.handleTruthToggle();
+
+    handleChange = (e, data) => {
+        var rowIndex = e.target.id.split(' ')[0];
+        var colIndex = e.target.id.split(' ')[1];
+        this.props.handleTruthToggle(rowIndex, colIndex);
+
     }
 
-    createTableRow = (index) => {
-        var people = this.state.people;
+    createTableRow = (index, matrix, people, campaign) => {
+        var people = people;
         var htmlTable = [<th>{people[index]}</th>];
-        var tableData = this.state.data;
-        tableData[index].forEach(data => {
+        var tableData = matrix;
+        tableData[index].forEach((data, columnIndex) => {
             if (data === 1) {
-                htmlTable.push(<td><input onClick={() => this.handleChange(data)} type='checkbox' checked/>{data}</td>);
+                htmlTable.push(<td><input id={index + ' ' + columnIndex} onClick={(e) => this.handleChange(e, data)} type='checkbox' checked/>{data}</td>);
             } else {
-                htmlTable.push(<td><input onClick={() => this.handleChange(data)} type='checkbox' unchecked/>{data}</td>);
+                htmlTable.push(<td><input id={index + ' ' + columnIndex} onClick={(e) => this.handleChange(e, data)} type='checkbox' unchecked/>{data}</td>);
             }
         });
         return htmlTable
     }
 
     render() {
+        const { matrix, campaign, people } = this.props;
+        console.log("PROPS" + this.props)
+        console.log("matrix: " + matrix)
         console.log("Called render");
-        const { data, campaign, people } = this.state;
         let campaignRow = campaign.map(value => {
             return <th>{value}</th>
         });
@@ -58,8 +61,8 @@ class TableComponent extends Component {
                     <tr>{campaignRow}</tr>
                 </thead>
                 <tbody>
-                    {data.map((value, index) => {
-                        return <tr>{this.createTableRow(index)}</tr>;
+                    {matrix.map((value, index) => {
+                        return <tr>{this.createTableRow(index, matrix, people, campaign)}</tr>;
                     })}
                 </tbody></table>
             </div>
