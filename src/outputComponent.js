@@ -14,7 +14,7 @@ class OutputComponent extends Component {
         let tCampaign = e.target.getAttribute("value");
         for(let i = 0; i < this.props.campaign.length; i++) {
             if (this.props.campaign[i] == tCampaign) {
-                this.props.targetCampaign = i;
+                this.props.handleTargetCampaign(i);
                 break;
             }
         }
@@ -147,7 +147,7 @@ class OutputComponent extends Component {
     buildHeader(targetCampaign) {
         if (targetCampaign > 0) {
             return (
-                <h2>Campaign {targetCampaign}</h2>
+                <h2>Campaign {targetCampaign+1}</h2>
             )
         }
     }

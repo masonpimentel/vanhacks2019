@@ -12,11 +12,19 @@ import Row from 'react-bootstrap/Row'
 
 class App extends Component {
 
+fetchTargetCampaign() {
+  return -1;
+}
+
 state = {
   matrix: fetchMatrix(),
   campaign: fetchCampaigns(),
   users: fetchUsers(),
     targetCampaign: -1
+}
+
+handleTargetCampaign = (index) => {
+  this.setState({targetCampaign: index});
 }
 
 handleTruthToggle = (rowIndex, colIndex) => {
@@ -51,7 +59,7 @@ handleTruthToggle = (rowIndex, colIndex) => {
                 </Row>
                 <Row>
                 <Col>
-                <OutputComponent {...this.state}/>
+                <OutputComponent {...this.state} handleTargetCampaign={this.handleTargetCampaign}/>
                 </Col>
                 </Row>
             </Container>
