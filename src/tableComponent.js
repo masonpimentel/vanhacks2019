@@ -37,7 +37,9 @@ class TableComponent extends Component {
 
         return (
         <div className="TableComponent">
-                <h2>Table Component</h2>
+                <div class="donator-table">
+                <h2>Donator Table</h2>
+                </div>
                 <Table responsive striped bordered hover size="sm">
                     <thead>
                         <tr>{this.createCampaignRow(campaign)}</tr>
