@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Markup } from 'interweave';
 import './tableComponent.css';
 
 class TableComponent extends Component {
@@ -21,35 +20,39 @@ class TableComponent extends Component {
             htmlTable += '<tr>';
             rowData.forEach(function(cellData) {
               if (cellData == 1) {
-                htmlTable += '<td><input type="radio" value="' + cellData + '" checked></td>';
+                htmlTable += '<td><input type="checkbox"/></td>';
+                htmlTable += '<td><input type="checkbox"/></td>';
                 console.log(htmlTable);
               } else {
-                htmlTable += '<td><input type="radio" value="' + cellData + '" unchecked></td>';
+                htmlTable += '<td><input type="text"/></td>';
               }
           });
           htmlTable += '</tr>';
         });
         htmlTable += '</tbody></table>'
         return htmlTable; 
-       }
+    }
 
-    // createTable = () => {
-    //     console.log("document: " + document);
-    //     return document.createElement("table");
-    //     // let tableBody = document.createElement("tbody");
-    // }
+    createTableRow = (index) => {
+        var htmlTable = [];
+        var tableData = this.state.data;
+        tableData[index].forEach(data => {
+            htmlTable.push(<td>{data}</td>)
+        });
+        return htmlTable
+    }
 
     render() {
         const { data, campaign, people } = this.state;
         let campaignRow = campaign.map(value => {
             return <th>{value}</th>
-        })
+        });
 
         let dataRowAll = [];
         let dataRow = [];
         const getRow = (index) => {
-            dataRow.push("<td>" + people[index] + "</td>")
-        }
+            dataRow.push("<td>" + people[index] + "</td>");
+        };
         for (let i = 0; i < people.length; i++) {
             dataRowAll.push(getRow(i));
         }
@@ -59,12 +62,18 @@ class TableComponent extends Component {
         <div className="TableComponent">
             <div className="TC-header">
                 <h2>Table Component</h2>
+                {[<p>sfjdfs</p>, <p>sdfdsaf</p>]}
                 <tr>{campaignRow}</tr>
-                <Markup content={this.createTable()}/>
+                <table><tbody>
+                    {data.map((value, index) => {
+                        return <tr>{this.createTableRow(index)}</tr>;
+                    })}
+
+                    </tbody></table>
             </div>
         </div>
         );
     }
 }
 
-export default TableComponent
+export default TableComponent;
