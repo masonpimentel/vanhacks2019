@@ -5,12 +5,21 @@ import './outputComponent.css';
 import Table from "react-bootstrap/Table";
 
 class OutputComponent extends Component {
-    targetCampaign = 3;
+    targetCampaign = -1;
 
     getTargetCampaign = () => {
-        return 2;
-    }
+        console.log("got : " + this.targetCampaign);
         return this.targetCampaign;
+    };
+
+    setTargetCampaign = (e) => {
+        let tCampaign = e.target.getAttribute("value");
+        for(let i = 0; i < this.props.campaign.length; i++) {
+            if (this.props.campaign[i] == tCampaign) {
+                this.targetCampaign = i;
+                break;
+            }
+        }
     };
 
     getBoolean = (data_matrix, userIdx, campaignIdx) => {
@@ -145,7 +154,7 @@ class OutputComponent extends Component {
     render() {
         const { matrix, campaign, users } = this.props;
         
-        const dropdown = <DropdownButton id="dropdown-basic-button" title="Campaigns">
+        const dropdown = <DropdownButton onClick={this.setTargetCampaign} id="dropdown-basic-button" title="Campaigns">
             {campaign.map((campaign) => <Dropdown.Item value={campaign}>{campaign}</Dropdown.Item>)}
         </DropdownButton>
 
