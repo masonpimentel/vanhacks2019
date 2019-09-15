@@ -114,7 +114,7 @@ class OutputComponent extends Component {
             });
             var average_value = 0;
             var total_similarities = 0;
-            var total_comparisons
+            var total_comparisons = 0;
             recommended_User.data.forEach((user_data, index) => {
                 if(user_data.likelyTo == false) {
                     average_value += (1.0 - user_data.chance);
@@ -125,7 +125,9 @@ class OutputComponent extends Component {
                 total_similarities += user_data.similarities;
                 total_comparisons += user_data.comparisons;
             });
-            recommended_User.weighted_avg = (this.findProbability(total_similarities, total_comparisons));
+            average_value = average_value / total_similarities;
+            //recommended_User.weighted_avg = (this.findProbability(average_value, total_similarities));
+            console.log("average probability: " + average_value);
             probabilityArr.recommendations.push(recommended_User);
         });
         return probabilityArr;
