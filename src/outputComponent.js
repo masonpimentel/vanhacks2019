@@ -5,9 +5,13 @@ import './outputComponent.css';
 import Table from "react-bootstrap/Table";
 
 class OutputComponent extends Component {
+    targetCampaign = 3;
+
     getTargetCampaign = () => {
         return 2;
     }
+        return this.targetCampaign;
+    };
 
     getBoolean = (data_matrix, userIdx, campaignIdx) => {
         if(data_matrix[userIdx][campaignIdx] === null)  {
@@ -119,6 +123,14 @@ class OutputComponent extends Component {
         return probabilityArr;
     };
 
+    buildHeader(targetCampaign) {
+        if (targetCampaign > 0) {
+            return (
+                <h2>Campaign {targetCampaign}</h2>
+            )
+        }
+    }
+
     buildRows(matrix, users, campaign) {
         let rowData = this.buildProbabilityArray(matrix, users, campaign).recommendations;
 
@@ -139,11 +151,11 @@ class OutputComponent extends Component {
 
         return (
         <div className="OutputComponent">
+            <div>{dropdown}</div>
             <div className="Output-header">
-                <h2>Campaign {this.getTargetCampaign()}</h2>
+                {this.buildHeader(this.getTargetCampaign())}
                 {/* <h2>Campaign {this.campaignToFocus()}</h2> */}
             </div>
-            <div>{dropdown}</div>
             <Table responsive striped bordered hover size="sm">
                 <thead>
                     <tr>
