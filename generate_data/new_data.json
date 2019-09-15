@@ -1,6 +1,6 @@
 [
     {
-        "email": "bradtke.trey@yahoo.com",
+        "email": "bradtke.trey@yahoo.com",
         "campaign_1": false,
         "campaign_2": null,
         "campaign_3": true,
@@ -13,7 +13,7 @@
         "campaign_10": true
     },
     {
-        "email": "yblanda@gerlach.com",
+        "email": "yblanda@gerlach.com",
         "campaign_1": true,
         "campaign_2": true,
         "campaign_3": true,
@@ -26,7 +26,7 @@
         "campaign_10": false
     },
     {
-        "email": "herta.haag@haley.com",
+        "email": "herta.haag@haley.com",
         "campaign_1": null,
         "campaign_2": null,
         "campaign_3": false,
@@ -39,7 +39,7 @@
         "campaign_10": false
     },
     {
-        "email": "aemard@weber.info",
+        "email": "aemard@weber.info",
         "campaign_1": null,
         "campaign_2": null,
         "campaign_3": false,
@@ -52,7 +52,7 @@
         "campaign_10": false
     },
     {
-        "email": "genevieve26@yahoo.com",
+        "email": "genevieve26@yahoo.com",
         "campaign_1": null,
         "campaign_2": null,
         "campaign_3": null,
@@ -65,7 +65,7 @@
         "campaign_10": false
     },
     {
-        "email": "rleuschke@gmail.com",
+        "email": "rleuschke@gmail.com",
         "campaign_1": false,
         "campaign_2": false,
         "campaign_3": null,
@@ -78,7 +78,7 @@
         "campaign_10": false
     },
     {
-        "email": "crooks.joshua@bradtke.biz",
+        "email": "crooks.joshua@bradtke.biz",
         "campaign_1": null,
         "campaign_2": null,
         "campaign_3": null,
@@ -91,7 +91,7 @@
         "campaign_10": null
     },
     {
-        "email": "levi.sanford@gmail.com",
+        "email": "levi.sanford@gmail.com",
         "campaign_1": false,
         "campaign_2": false,
         "campaign_3": false,
@@ -104,7 +104,7 @@
         "campaign_10": false
     },
     {
-        "email": "hassie96@larkin.net",
+        "email": "hassie96@larkin.net",
         "campaign_1": true,
         "campaign_2": true,
         "campaign_3": true,
@@ -117,7 +117,7 @@
         "campaign_10": false
     },
         {
-        "email": "myrtle18@dach.biz",
+        "email": "myrtle18@dach.biz",
         "campaign_1": true,
         "campaign_2": true,
         "campaign_3": false,
