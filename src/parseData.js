@@ -2,7 +2,7 @@ import data from './data.json'
 
 var users = []
 var campaigns = []
-let matrix = [];
+export let matrix = [];
 
 function fetchUsers () {
   for (let i = 0; i < data.length; i++) {

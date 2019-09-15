@@ -1,16 +1,38 @@
 import React, { Component } from 'react';
 import './outputComponent.css';
 
+function testing(someContent)  {
+    console.log(someContent);
+}
+
 class OutputComponent extends Component {
-    render() {
+    //console.log(matrix2);
+    render()    {
+        const MATRIX = this.props.matrix2;
+
+        testing();
         return (
         <div className="OutputComponent">
             <div className="Output-header">
                 <h2>Output Component</h2>
+                <h2>{mtx}</h2>
             </div>
         </div>
         );
     }
 }
+
+// const OutputComponent = ({ matrix2 }) => {
+//     //console.log(matrix2);
+//     testing("asd");
+//     return (
+//     <div className="OutputComponent">
+//         <div className="Output-header">
+//             <h2>Output Component</h2>
+//             <h2>{matrix2}</h2>
+//         </div>
+//     </div>
+//     );
+// };
 
 export default OutputComponent
