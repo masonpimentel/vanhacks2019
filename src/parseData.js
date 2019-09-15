@@ -1,23 +1,27 @@
 import data from './data.json'
 
-var users = []
-var campaigns = []
-let matrix = [];
+export function fetchUsers () {
+  var users = [];
 
-function fetchUsers () {
   for (let i = 0; i < data.length; i++) {
     users[i] = data[i].email;
   }
+  return users
 }
 
-function fetchCampaigns () {
+export function fetchCampaigns () {
+  var campaigns = [];
+
   let keys = Object.keys(data[0])
   for (let i = 0; i < keys.length - 1; i++) {
     campaigns[i] = keys[i + 1]
   }
+  return campaigns
 }
 
-function fetchMatrix () {
+export function fetchMatrix () {
+  let matrix = [];
+
   for (let i = 0; i < data.length; i++) {
     let person = [];
     for (let campaign in data[i]) {
@@ -26,17 +30,12 @@ function fetchMatrix () {
           person.push(1);
         }
         else {
-          person.push(0);
+          data[i][campaign] === null ? person.push(null) : person.push(0)
         }
       }
     }
+    console.log("creating person");
     matrix.push(person);
   }
+  return matrix
 }
-
-fetchUsers()
-fetchCampaigns()
-fetchMatrix()
-console.log(users)
-console.log(campaigns)
-console.log(matrix)

@@ -25,7 +25,14 @@ int getNumObjects() {
 }
 
 string genBool()    {
-    return ( rand() % 2 == true ? "true" : "false" );
+    int randomVal = rand() % 3;
+    if(randomVal == 0)  {
+        return "false";
+    }
+    else if(randomVal == 1) {
+        return "true";
+    }
+    return "null";
 }
 
 string generateLine(string email, int numCauses)    {
@@ -64,6 +71,7 @@ int main()  {
         mock_data << generateLine(curLine, numCauses) << ",\n";
         curLine = "";
     }
+    getline(email_file, curLine);
     mock_data << SPACE_TABS << generateLine(curLine, numCauses) << "\n" << "]";
     mock_data.close();
     email_file.close();

@@ -1,78 +1,50 @@
 import React, { Component } from 'react';
+import Table from 'react-bootstrap/Table';
+import Form from 'react-bootstrap/Form'
 import './tableComponent.css';
 
 class TableComponent extends Component {
-    state = {
-        data: [
-            [ 0, 0, 1 ],
-            [ 0, 1, 0 ],
-            [ 1, 1, 1 ],
-        ],
-        campaign: [" ", "vic", "vic's ankles", "vic's lungs" ],
-        people: [ "brian", "elliot", "mason" ],
-    };
-
-    createTable = () => {
-        var htmlTable = '<table>',
-            tableData = this.state.data;
-        htmlTable += '<tbody>';
-        tableData.forEach(function(rowData) {
-            htmlTable += '<tr>';
-            rowData.forEach(function(cellData) {
-              if (cellData == 1) {
-                htmlTable += '<td><input type="checkbox"/></td>';
-                htmlTable += '<td><input type="checkbox"/></td>';
-                console.log(htmlTable);
-              } else {
-                htmlTable += '<td><input type="text"/></td>';
-              }
-          });
-          htmlTable += '</tr>';
-        });
-        htmlTable += '</tbody></table>'
-        return htmlTable; 
+    createCampaignRow = (campaign) => {
+        let campaignRow = campaign.map(value => <th>{value}</th>)
+        campaignRow.splice(0, 0, <th></th>);
+        return campaignRow
     }
 
-    createTableRow = (index) => {
-        var people = this.state.people;
-        var htmlTable = [<th>{people[index]}</th>];
-        var tableData = this.state.data;
-        tableData[index].forEach(data => {
-            htmlTable.push(<td><input type='checkbox'/>{data}</td>)
+    createMatrixRow = (index, matrix, users) => {
+        var htmlTable = [<th>{users[index]}</th>];
+
+        matrix[index].forEach((data, columnIndex) => {
+            if (data === 1) {
+                window.console.log("IF 1 Data = " + data + " index = " + index + " " + columnIndex);
+                htmlTable.push(<td><Form.Check id={index + ' ' + columnIndex} onChange={(e) => this.handleChange(e, data, matrix)} type='checkbox' checked/>{data}</td>);
+            } else {
+                window.console.log("ELSE Data = " + data + " index = " + index + " " + columnIndex);
+                htmlTable.push(<td><Form.Check id={index + ' ' + columnIndex} onChange={(e) => this.handleChange(e, data, matrix)} type='checkbox'/> {data === 0 ? 0 : 'null'}</td>);
+            }
         });
-        return htmlTable
+        return htmlTable;
+    }
+
+    handleChange = (e, data, matrix) => {
+        var rowIndex = e.target.id.split(' ')[0];
+        var colIndex = e.target.id.split(' ')[1];
+        this.props.handleTruthToggle(rowIndex, colIndex, matrix);
     }
 
     render() {
-        const { data, campaign, people } = this.state;
-        let campaignRow = campaign.map(value => {
-            return <th>{value}</th>
-        });
+        const { matrix, campaign, users} = this.props;
 
-        let dataRowAll = [];
-        let dataRow = [];
-        const getRow = (index) => {
-            dataRow.push("<td>" + people[index] + "</td>");
-        };
-        for (let i = 0; i < people.length; i++) {
-            dataRowAll.push(getRow(i));
-        }
-        
-        
         return (
         <div className="TableComponent">
-            <div className="TC-header">
                 <h2>Table Component</h2>
-                {[<p>sfjdfs</p>, <p>sdfdsaf</p>]}
-                <table><thead>
-                    <tr>{campaignRow}</tr>
-                </thead>
-                <tbody>
-                    {data.map((value, index) => {
-                        return <tr>{this.createTableRow(index)}</tr>;
-                    })}
-                </tbody></table>
-            </div>
+                <Table responsive striped bordered hover size="sm">
+                    <thead>
+                        <tr>{this.createCampaignRow(campaign)}</tr>
+                    </thead>
+                    <tbody>
+                        {matrix.map((value, index) => <tr>{this.createMatrixRow(index, matrix, users)}</tr>)}
+                    </tbody>
+                </Table>
         </div>
         );
     }
